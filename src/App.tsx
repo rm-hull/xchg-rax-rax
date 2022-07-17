@@ -1,4 +1,5 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Child from "./pages/Child";
 
 function App() {
   return (
@@ -11,26 +12,9 @@ function App() {
           </div>
         }
       />
-      <Route
-        path="/"
-        element={
-          <div>
-            <h3>Home page</h3>
-          </div>
-        }
-      />
+      <Route path="/" element={<Navigate to="/0x01" replace />} />
       <Route path="/:id" element={<Child />} />
     </Routes>
-  );
-}
-
-function Child() {
-  const { id } = useParams();
-
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
   );
 }
 
