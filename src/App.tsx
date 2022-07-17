@@ -12,7 +12,7 @@ function App() {
           </div>
         }
       />
-      <Route path="/" element={<Navigate to="/0x01" replace />} />
+      <Route path="/" element={<Navigate to="/0x00" replace />} />
       <Route path="/:id" element={<Child />} />
     </Routes>
   );
