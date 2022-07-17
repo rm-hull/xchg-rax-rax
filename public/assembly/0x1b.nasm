@@ -1,0 +1,2 @@
+push     rax
+ret
