@@ -8,9 +8,13 @@ export default function Child() {
   const [code, setCode] = useState("");
   const state = useAsync(async () => {
     const response = await fetch(`assembly/${id}.nasm`);
-    const result = await response.text();
-    setCode(result);
-    return result;
+    if (response.ok) {
+      const result = await response.text();
+      setCode(result);
+      return result;
+    } else {
+      throw Error(`Response status: ${response.status}`);
+    }
   }, [id, setCode]);
 
   if (state.loading) {
