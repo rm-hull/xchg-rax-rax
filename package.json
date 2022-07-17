@@ -1,6 +1,8 @@
 {
   "name": "xchg-rax-rax",
   "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "https://destructuring-bind.org/xchg-rax-rax",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
