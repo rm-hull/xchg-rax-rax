@@ -8,6 +8,7 @@ import { CodeEditor } from "../components/CodeEditor";
 export default function Child() {
   const { id } = useParams();
   const [code, setCode] = useState("");
+  const [instructionPointer, setInstructionPointer] = useState(0);
   const state = useAsync(async () => {
     const response = await fetch(`assembly/${id}.nasm`);
     if (response.ok) {
@@ -27,23 +28,55 @@ export default function Child() {
     return <Container>Error: {state.error.message}</Container>;
   }
 
+  const handleSingleStep = () => {
+    setInstructionPointer((prev) => (prev < code.split("\n").length ? prev + 1 : 0));
+  };
+
+  const handleRestart = () => {
+    setInstructionPointer(1);
+  };
+
+  const handleStop = () => {
+    setInstructionPointer(0);
+  };
+
   return (
     <Container>
       <HStack justifyContent="space-between">
         <h3>ID: {id}</h3>
         <HStack>
           <Tooltip label="Single step" color="white">
-            <IconButton variant="outline" icon={<VscDebugContinue />} aria-label="Single step" textColor="green" />
+            <IconButton
+              variant="outline"
+              icon={<VscDebugContinue />}
+              aria-label="Single step"
+              textColor="green"
+              onClick={handleSingleStep}
+            />
           </Tooltip>
           <Tooltip label="Stop" color="white">
-            <IconButton variant="outline" icon={<VscDebugStop />} aria-label="Stop" textColor="red" />
+            <IconButton
+              variant="outline"
+              icon={<VscDebugStop />}
+              aria-label="Stop"
+              textColor="red"
+              onClick={handleStop}
+              disabled={instructionPointer === 0}
+            />
           </Tooltip>
           <Tooltip label="Restart" color="white">
-            <IconButton variant="outline" icon={<VscDebugRestart />} aria-label="Restart" textColor="yellow" />
+            <IconButton
+              variant="outline"
+              icon={<VscDebugRestart />}
+              aria-label="Restart"
+              textColor="yellow"
+              onClick={handleRestart}
+              disabled={instructionPointer < 2}
+            />
           </Tooltip>
         </HStack>
       </HStack>
-      <CodeEditor code={code} onCodeChange={setCode} />
+      <CodeEditor code={code} onCodeChange={setCode} currentLine={instructionPointer} />
     </Container>
   );
 }

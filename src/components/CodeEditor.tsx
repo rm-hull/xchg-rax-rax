@@ -7,6 +7,7 @@ import "./styles.css";
 
 type EditorProps = {
   code: string;
+  currentLine?: number;
   onCodeChange: (code: string) => void;
 };
 
@@ -14,19 +15,19 @@ const hightlightWithLineNumbers = (input: string, language: string, currentLine?
   highlight(input, language)
     .split("\n")
     .map((line: string, i: number) => (
-      <div key={i} className={clsx({ currentLine: currentLine === i })}>
+      <div key={i} className={clsx({ currentLine: currentLine === i + 1 })}>
         <span className="editorLineNumber">{i + 1}</span>
         <span dangerouslySetInnerHTML={{ __html: line }} />
         <br />
       </div>
     ));
 
-export function CodeEditor({ code, onCodeChange }: EditorProps) {
+export function CodeEditor({ code, onCodeChange, currentLine }: EditorProps) {
   return (
     <Editor
       value={code}
       onValueChange={onCodeChange}
-      highlight={(code) => hightlightWithLineNumbers(code, languages.nasm)}
+      highlight={(code) => hightlightWithLineNumbers(code, languages.nasm, currentLine)}
       padding={10}
       textareaId="codeArea"
       className="editor"
