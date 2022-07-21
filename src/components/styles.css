@@ -1,0 +1,22 @@
+.editor {
+  counter-reset: line;
+}
+
+.editor #codeArea {
+  outline: none;
+  padding-left: 60px !important;
+  caret-color: white;
+}
+
+.editor pre {
+  padding-left: 60px !important;
+}
+
+.editor .editorLineNumber {
+  position: absolute;
+  left: 0px;
+  color: #7b7b7b;
+  text-align: right;
+  width: 40px;
+  font-weight: 100;
+}
