@@ -1,4 +1,6 @@
+import { Container, HStack, IconButton, Tooltip } from "@chakra-ui/react";
 import { useState } from "react";
+import { VscDebugContinue, VscDebugRestart, VscDebugStop } from "react-icons/vsc";
 import { useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import { CodeEditor } from "../components/CodeEditor";
@@ -18,17 +20,30 @@ export default function Child() {
   }, [id, setCode]);
 
   if (state.loading) {
-    return <div>Loading...</div>;
+    return <Container>Loading...</Container>;
   }
 
   if (state.error) {
-    return <div>Error: {state.error.message}</div>;
+    return <Container>Error: {state.error.message}</Container>;
   }
 
   return (
-    <div>
-      <h3>ID: {id}</h3>
+    <Container>
+      <HStack justifyContent="space-between">
+        <h3>ID: {id}</h3>
+        <HStack>
+          <Tooltip label="Single step" color="white">
+            <IconButton variant="outline" icon={<VscDebugContinue />} aria-label="Single step" textColor="green" />
+          </Tooltip>
+          <Tooltip label="Stop" color="white">
+            <IconButton variant="outline" icon={<VscDebugStop />} aria-label="Stop" textColor="red" />
+          </Tooltip>
+          <Tooltip label="Restart" color="white">
+            <IconButton variant="outline" icon={<VscDebugRestart />} aria-label="Restart" textColor="yellow" />
+          </Tooltip>
+        </HStack>
+      </HStack>
       <CodeEditor code={code} onCodeChange={setCode} />
-    </div>
+    </Container>
   );
 }
