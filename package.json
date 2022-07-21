@@ -4,6 +4,7 @@
   "license": "MIT",
   "homepage": "https://destructuring-bind.org/xchg-rax-rax",
   "dependencies": {
+    "clsx": "^1.2.1",
     "prismjs": "^1.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
