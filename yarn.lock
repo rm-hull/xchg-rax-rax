@@ -3842,6 +3842,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/parsimmon@npm:^1.10.6":
+  version: 1.10.6
+  resolution: "@types/parsimmon@npm:1.10.6"
+  checksum: 44191ee2a31dcf172d9e95070190e6dcb0ab1b02500fc22ca12100baaae1ffada208418d36b0ddcae18cf36128f262113439436aedaf018d269d3f905f416a7f
+  languageName: node
+  linkType: hard
+
 "@types/prettier@npm:^2.1.5":
   version: 2.6.3
   resolution: "@types/prettier@npm:2.6.3"
@@ -10548,6 +10555,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"parsimmon@npm:^1.18.1":
+  version: 1.18.1
+  resolution: "parsimmon@npm:1.18.1"
+  checksum: ef6da910fb2bf2630098eed30d9ea7c3cd2dc53087041709e12da5714888a61764dd7082a56e96d9f9c7a67591f017f2d30543e03a50009e46267becc1502402
+  languageName: node
+  linkType: hard
+
 "pascal-case@npm:^3.1.2":
   version: 3.1.2
   resolution: "pascal-case@npm:3.1.2"
@@ -14587,6 +14601,7 @@ __metadata:
     "@types/jest": ^27.5.2
     "@types/node": ^17.0.45
     "@types/object-hash": ^2.2.1
+    "@types/parsimmon": ^1.10.6
     "@types/prismjs": ^1.26.0
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
@@ -14607,6 +14622,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-testing-library: ^5.5.1
     framer-motion: ^6.5.1
+    parsimmon: ^1.18.1
     prettier: ^2.7.1
     prismjs: ^1.28.0
     react: ^18.2.0
