@@ -1,11 +1,14 @@
+import { Index } from "parsimmon";
 import Operand from "./operand";
 
-export default class Instruction {
-  readonly name: string;
-  readonly operands: Operand[];
+type Metadata = {
+  start: Index;
+  end: Index;
+};
 
-  constructor(name: string, ...operands: Operand[]) {
-    this.name = name;
-    this.operands = operands;
-  }
-}
+export type Instruction = {
+  opcode: string;
+  operands: Operand[];
+  metadata?: Metadata;
+  label?: string;
+};
