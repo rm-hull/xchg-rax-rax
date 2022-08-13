@@ -1,4 +1,4 @@
-import { alt, digits, newline, optWhitespace, regexp, seqObj, string } from "parsimmon";
+import { alt, digit, digits, newline, optWhitespace, regexp, Result, seq, seqObj, string } from "parsimmon";
 import Address from "./vm/address";
 import Instruction from "./vm/instruction";
 import Literal from "./vm/literal";
@@ -13,16 +13,27 @@ const linebreak = newline.trim(optSpace).many();
 
 const label = regexp(/(\.?[a-z]+):/, 1).desc("label");
 
-const opcode = regexp(/[a-z]{3,}/).desc("opcode");
-const register = regexp(/[a-z]{3}/)
+const opcode = regexp(/[a-z]{2,}/)
+  .desc("opcode")
+  .assert(Instruction.isValidOpcode, "invalid opcode");
+
+const register = regexp(/[a-z]{2,3}/)
   .desc("register")
   .assert(Register.isValidName, "invalid register name")
   .map((value) => new Register(value));
 
-const literal = digits.map((value) => new Literal(parseInt(value))).desc("literal");
-const address = digits
+const decimalNumber = seq(string("-").fallback(""), digit, digits).tie().map(Number);
+const hexadecimalNumber = string("0x")
+  .then(regexp(/[0-9a-fA-F]+/))
+  .map((value) => parseInt(value, 16))
+  .desc("hexadecimal number");
+
+const number = alt(hexadecimalNumber, decimalNumber);
+
+const literal = number.map((value) => new Literal(value)).desc("literal");
+const address = number
   .wrap(string("["), string("]"))
-  .map((value) => new Address(parseInt(value)))
+  .map((value) => new Address(value))
   .desc("address");
 const reference = alt(string("$"), regexp(/\.?[a-z]/))
   .map((value) => new Reference(value))
@@ -40,14 +51,11 @@ const instruction = seqObj<Instr>(
   ["label", label.trim(linebreak).fallback(undefined)],
   optSpace,
   ["opcode", opcode],
-  space,
-  ["operands", operand.sepBy(comma)]
+  ["operands", space.then(operand.sepBy(comma)).fallback([])]
 )
   .mark()
-  .map((mark): Instruction => ({ ...mark.value, metadata: { start: mark.start, end: mark.end } }));
+  .map(({ value, start, end }) => new Instruction(value.opcode, value.operands, value.label, { start, end }));
 
 const program = instruction.sepBy(linebreak);
 
-export const parse = (input: string) => program.trim(optWhitespace).parse(input);
-
-// export const index = (offset: number, line: number, column: number): Index => ({ offset, line, column });
+export const parse = (input: string): Result<Instruction[]> => program.trim(optWhitespace).parse(input);

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import { CodeEditor } from "../components/CodeEditor";
 import LineNumberRange from "../LineNumberRange";
+import { parse } from "../parser";
 
 export default function Child() {
   const { id } = useParams();
@@ -45,6 +46,10 @@ export default function Child() {
     setInstructionPointer(0);
   };
 
+  const result = parse(code);
+  const failure = result.status ? undefined : result;
+  const hasError = !result.status;
+
   return (
     <Container>
       <HStack justifyContent="space-between">
@@ -57,6 +62,7 @@ export default function Child() {
               aria-label="Continue"
               textColor="#86bcf9"
               onClick={handleContinue}
+              disabled={hasError}
             />
           </Tooltip>
           <Tooltip label="Single step" color="white">
@@ -66,6 +72,7 @@ export default function Child() {
               aria-label="Single step"
               textColor="#86bcf9"
               onClick={handleSingleStep}
+              disabled={hasError}
             />
           </Tooltip>
           <Tooltip label="Stop" color="white">
@@ -75,7 +82,7 @@ export default function Child() {
               aria-label="Stop"
               textColor="#e58c77"
               onClick={handleStop}
-              disabled={instructionPointer === 0}
+              disabled={hasError || instructionPointer === 0}
             />
           </Tooltip>
           <Tooltip label="Restart" color="white">
@@ -85,12 +92,17 @@ export default function Child() {
               aria-label="Restart"
               textColor="#9acf8c"
               onClick={handleRestart}
-              disabled={instructionPointer < 2}
+              disabled={hasError || instructionPointer < 2}
             />
           </Tooltip>
         </HStack>
       </HStack>
-      <CodeEditor code={code} onCodeChange={setCode} currentLine={new LineNumberRange(instructionPointer)} />
+      <CodeEditor
+        code={code}
+        onCodeChange={setCode}
+        failure={failure}
+        currentLine={new LineNumberRange(instructionPointer)}
+      />
     </Container>
   );
 }

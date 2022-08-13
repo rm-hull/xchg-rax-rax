@@ -21,6 +21,22 @@
   font-weight: 100;
 }
 
+.editor .editorErrorMarker {
+  position: absolute;
+  left: 60px;
+  background-color: rgba(200, 0, 0, 0.2);
+  text-align: right;
+  font-weight: 100;
+}
+
+.editor .editorErrorMessage {
+  position: absolute;
+  right: 10px;
+  font-weight: bold;
+  font-style: italic;
+  color: rgba(250, 30, 0, 0.85);
+}
+
 .editor .currentLine {
   background-color: rgba(0, 200, 0, 0.2);
 }

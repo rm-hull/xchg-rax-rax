@@ -8,6 +8,6 @@ export default class Register implements Operand {
   }
 
   static isValidName(name: string): boolean {
-    return ["rax", "rbx", "rbp", "rdx", "rdi", "eax", "esi", "edi"].includes(name);
+    return ["rax", "rbx", "rbp", "rcx", "rdx", "rdi", "eax", "esi", "edi"].includes(name);
   }
 }

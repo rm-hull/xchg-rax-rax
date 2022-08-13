@@ -36,6 +36,12 @@ describe("NASM parser", () => {
     expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
+  it("should parse an instruction with a hexadecimal literal operands", () => {
+    const instr: Instruction = { opcode: "ror", operands: [new Register("rcx"), new Literal(13)] };
+    const result = parse("ror      rcx,0xd");
+    expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
+  });
+
   it("should parse an instruction with register and address operands", () => {
     const instr: Instruction = { opcode: "lea", operands: [new Register("rbx"), new Address(0)] };
     const result = parse("lea rbx,[0]");
@@ -82,6 +88,21 @@ describe("NASM parser", () => {
       { opcode: "sub", operands: [new Register("edi"), new Register("edi")] },
       { opcode: "push", operands: [new Literal(0)] },
       { opcode: "pop", operands: [new Register("rbp")] },
+    ];
+    const result = parse(input);
+    expect(stripMetadata(result)).toEqual({ status: true, value: program });
+  });
+
+  it("should parse an instruction with no operands", () => {
+    const input = `
+      cqo
+      xor      rax,rdx
+      sub      rax,rdx
+    `;
+    const program: Instruction[] = [
+      { opcode: "cqo", operands: [] },
+      { opcode: "xor", operands: [new Register("rax"), new Register("rdx")] },
+      { opcode: "sub", operands: [new Register("rax"), new Register("rdx")] },
     ];
     const result = parse(input);
     expect(stripMetadata(result)).toEqual({ status: true, value: program });
