@@ -6,4 +6,8 @@ export default class Register implements Operand {
   constructor(name: string) {
     this.name = name;
   }
+
+  static isValidName(name: string): boolean {
+    return ["rax", "rbx", "rbp", "rdx", "rdi", "eax", "esi", "edi"].includes(name);
+  }
 }

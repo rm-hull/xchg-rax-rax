@@ -1,4 +1,4 @@
-import { alt, digits, Index, newline, optWhitespace, regexp, seqObj, string } from "parsimmon";
+import { alt, digits, newline, optWhitespace, regexp, seqObj, string } from "parsimmon";
 import Address from "./vm/address";
 import Instruction from "./vm/instruction";
 import Literal from "./vm/literal";
@@ -14,9 +14,11 @@ const linebreak = newline.trim(optSpace).many();
 const label = regexp(/(\.?[a-z]+):/, 1).desc("label");
 
 const opcode = regexp(/[a-z]{3,}/).desc("opcode");
-const register = regexp(/(rax|rbx|rbp|rdx|rdi|eax|esi|edi)/)
-  .map((value) => new Register(value))
-  .desc("register");
+const register = regexp(/[a-z]{3}/)
+  .desc("register")
+  .assert(Register.isValidName, "invalid register name")
+  .map((value) => new Register(value));
+
 const literal = digits.map((value) => new Literal(parseInt(value))).desc("literal");
 const address = digits
   .wrap(string("["), string("]"))
@@ -48,4 +50,4 @@ const program = instruction.sepBy(linebreak);
 
 export const parse = (input: string) => program.trim(optWhitespace).parse(input);
 
-export const index = (offset: number, line: number, column: number): Index => ({ offset, line, column });
+// export const index = (offset: number, line: number, column: number): Index => ({ offset, line, column });
