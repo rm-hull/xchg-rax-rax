@@ -6,9 +6,16 @@ type Metadata = {
   end: Index;
 };
 
-export type Instruction = {
-  opcode: string;
-  operands: Operand[];
-  metadata?: Metadata;
-  label?: string;
-};
+export default class Instruction {
+  readonly opcode: string;
+  readonly operands: Operand[];
+  readonly label?: string;
+  readonly metadata?: Metadata;
+
+  constructor(opcode: string, operands: Operand[], label?: string, metadata?: Metadata) {
+    this.opcode = opcode;
+    this.operands = operands;
+    this.label = label;
+    this.metadata = metadata;
+  }
+}

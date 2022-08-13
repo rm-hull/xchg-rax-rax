@@ -1,11 +1,15 @@
-import { alt, digits, Index, newline, optWhitespace, regexp, seqObj, string, whitespace } from "parsimmon";
+import { alt, digits, Index, newline, optWhitespace, regexp, seqObj, string } from "parsimmon";
 import Address from "./vm/address";
-import { Instruction } from "./vm/instruction";
+import Instruction from "./vm/instruction";
 import Literal from "./vm/literal";
+import Operand from "./vm/operand";
 import Reference from "./vm/reference";
 import Register from "./vm/register";
 
-const comma = string(",");
+const comma = string(",").desc("comma");
+const optSpace = regexp(/[ \t]*/).desc("whitespace");
+const space = regexp(/[ \t]+/).desc("whitespace");
+const linebreak = newline.trim(optSpace).many();
 
 const label = regexp(/(\.?[a-z]+):/, 1).desc("label");
 
@@ -21,24 +25,27 @@ const address = digits
 const reference = alt(string("$"), regexp(/\.?[a-z]/))
   .map((value) => new Reference(value))
   .desc("reference");
-const operand = alt(register, reference, address, literal);
+const operand = alt(register, reference, address, literal).trim(optSpace);
 
-const instruction = seqObj<Instruction>(
-  optWhitespace,
-  ["label", label.fallback(undefined)],
-  optWhitespace,
-  newline.fallback(undefined),
-  optWhitespace,
+type Instr = {
+  opcode: string;
+  operands: Operand[];
+  label?: string;
+};
+
+const instruction = seqObj<Instr>(
+  optSpace,
+  ["label", label.trim(linebreak).fallback(undefined)],
+  optSpace,
   ["opcode", opcode],
-  whitespace,
-  ["operands", operand.trim(optWhitespace).sepBy(comma)],
-  optWhitespace
+  space,
+  ["operands", operand.sepBy(comma)]
 )
   .mark()
   .map((mark): Instruction => ({ ...mark.value, metadata: { start: mark.start, end: mark.end } }));
 
-const program = instruction.sepBy(newline.atLeast(1));
+const program = instruction.sepBy(linebreak);
 
-export const parse = (input: string) => program.parse(input);
+export const parse = (input: string) => program.trim(optWhitespace).parse(input);
 
 export const index = (offset: number, line: number, column: number): Index => ({ offset, line, column });

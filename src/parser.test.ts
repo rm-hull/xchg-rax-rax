@@ -1,17 +1,17 @@
 import { Result } from "parsimmon";
 import { parse } from "./parser";
 import Address from "./vm/address";
-import { Instruction } from "./vm/instruction";
+import Instruction from "./vm/instruction";
 import Literal from "./vm/literal";
 import Reference from "./vm/reference";
 import Register from "./vm/register";
 
 const stripMetadata = (result: Result<Instruction[]>): Result<Instruction[]> => {
   if (result.status) {
-    result.value.map((i) => {
-      i.metadata = undefined;
-      return i;
-    });
+    return {
+      status: true,
+      value: result.value.map((i) => new Instruction(i.opcode, i.operands, i.label)),
+    };
   }
 
   return result;
@@ -26,23 +26,20 @@ describe("NASM parser", () => {
 
   it("should parse an instruction with multiple register operands", () => {
     const instr: Instruction = { opcode: "xor", operands: [new Register("rax"), new Register("rdx")] };
-    const result = parse("xor      rax,rdx");
-    stripMetadata(result);
+    const result = stripMetadata(parse("xor      rax,rdx"));
     expect(result).toEqual({ status: true, value: [instr] });
   });
 
   it("should parse an instruction with register and literal operands", () => {
     const instr: Instruction = { opcode: "mov", operands: [new Register("rdx"), new Literal(0)] };
     const result = parse("mov      rdx,0");
-    stripMetadata(result);
-    expect(result).toEqual({ status: true, value: [instr] });
+    expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
   it("should parse an instruction with register and address operands", () => {
     const instr: Instruction = { opcode: "lea", operands: [new Register("rbx"), new Address(0)] };
     const result = parse("lea rbx,[0]");
-    stripMetadata(result);
-    expect(result).toEqual({ status: true, value: [instr] });
+    expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
   it("should parse an instruction with a label", () => {
@@ -52,8 +49,7 @@ describe("NASM parser", () => {
       operands: [new Register("rdi")],
     };
     const result = parse(".loop:\n  inc      rdi");
-    stripMetadata(result);
-    expect(result).toEqual({ status: true, value: [instr] });
+    expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
   it("should parse an instruction with a ref", () => {
@@ -62,11 +58,10 @@ describe("NASM parser", () => {
       operands: [new Reference("$")],
     };
     const result = parse("loop $");
-    stripMetadata(result);
-    expect(result).toEqual({ status: true, value: [instr] });
+    expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
-  it.skip("should parse a full program", () => {
+  it("should parse a full program", () => {
     const input = `
       xor      eax,eax
       lea      rbx,[0]
@@ -74,14 +69,21 @@ describe("NASM parser", () => {
       mov      rdx,0
       and      esi,0
       sub      edi,edi
+      
       push     0
       pop      rbp
     `;
-    const program: Instruction[] = [];
+    const program: Instruction[] = [
+      { opcode: "xor", operands: [new Register("eax"), new Register("eax")] },
+      { opcode: "lea", operands: [new Register("rbx"), new Address(0)] },
+      { opcode: "loop", operands: [new Reference("$")] },
+      { opcode: "mov", operands: [new Register("rdx"), new Literal(0)] },
+      { opcode: "and", operands: [new Register("esi"), new Literal(0)] },
+      { opcode: "sub", operands: [new Register("edi"), new Register("edi")] },
+      { opcode: "push", operands: [new Literal(0)] },
+      { opcode: "pop", operands: [new Register("rbp")] },
+    ];
     const result = parse(input);
-    stripMetadata(result);
-    console.log(result);
-    console.log(input);
-    expect(result).toEqual({ status: true, value: program });
+    expect(stripMetadata(result)).toEqual({ status: true, value: program });
   });
 });
