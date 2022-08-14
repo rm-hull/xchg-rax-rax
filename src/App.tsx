@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Child from "./pages/Child";
+import Debugger from "./pages/Debugger";
 
 const theme = {
   style: {
@@ -21,7 +21,7 @@ function App() {
           }
         />
         <Route path="/" element={<Navigate to="/0x00" replace />} />
-        <Route path="/:id" element={<Child />} />
+        <Route path="/:id" element={<Debugger />} />
       </Routes>
     </ChakraProvider>
   );

@@ -54,6 +54,7 @@ const instruction = seqObj<Instr>(
   ["operands", space.then(operand.sepBy(comma)).fallback([])]
 )
   .mark()
+  .trim(optWhitespace)
   .map(({ value, start, end }) => new Instruction(value.opcode, value.operands, value.label, { start, end }));
 
 const program = instruction.sepBy(linebreak);
