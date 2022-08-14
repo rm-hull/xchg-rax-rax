@@ -4,19 +4,18 @@ import { parse } from "../parser";
 import Address from "./address";
 import Instruction from "./instruction";
 import Literal from "./literal";
-import Register from "./register";
 
 export class Machine {
   [immerable] = true;
 
-  private registers: Record<string, Register>;
+  private registers: Record<string, number>;
   private memory: Record<number, number>;
   private program: Result<Instruction[]>;
   private sourceCode: string;
 
   constructor() {
     this.registers = {
-      ip: new Register("ip"),
+      ip: 0,
     };
     this.memory = {};
     this.program = parse("");
@@ -24,7 +23,7 @@ export class Machine {
   }
 
   public get ip(): number {
-    return this.registers.ip.value;
+    return this.registers.ip;
   }
 
   public get error(): Failure | undefined {
@@ -43,18 +42,18 @@ export class Machine {
   public step() {
     // TODO: execute instruction
     if (!hasError(this.program) && this.ip < this.program.value.length - 1) {
-      this.registers.ip.value++;
+      this.registers.ip++;
     } else {
       this.stop();
     }
   }
 
   public stop() {
-    this.registers.ip.value = 0;
+    this.registers.ip = 0;
   }
 
   public restart() {
-    this.registers.ip.value = 0;
+    this.registers.ip = 0;
   }
 
   public poke(address: Address, value: Literal) {
@@ -62,7 +61,7 @@ export class Machine {
   }
 
   public setRegister(name: string, value: Literal) {
-    this.registers[name].value = value.value;
+    this.registers[name] = value.value;
   }
 
   public *peek(startAddress: Address, endAddress: Address = startAddress) {
