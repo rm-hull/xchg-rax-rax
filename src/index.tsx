@@ -1,4 +1,4 @@
-import { ColorModeScript } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript, createLocalStorageManager, theme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -7,12 +7,17 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const manager = createLocalStorageManager("xchg-rax-rax.color-mode");
+// const theme = extendTheme(withDefaultColorScheme({ colorScheme: "red" }));
+
 root.render(
   <React.StrictMode>
-    <ColorModeScript initialColorMode="dark" />
-    <Router basename="/xchg-rax-rax">
-      <App />
-    </Router>
+    <ColorModeScript initialColorMode="dark" storageKey="xchg-rax-rax.color-mode" />
+    <ChakraProvider theme={theme} colorModeManager={manager}>
+      <Router basename="/xchg-rax-rax">
+        <App />
+      </Router>
+    </ChakraProvider>
   </React.StrictMode>
 );
 
