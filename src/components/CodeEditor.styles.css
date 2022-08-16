@@ -1,15 +1,17 @@
 .editor {
   counter-reset: line;
+  font-family: JetBrainsMono, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
 }
 
 .editor #codeArea {
   outline: none;
   padding-left: 60px !important;
-  /* caret-color: white; */
 }
 
 .editor pre {
   padding-left: 60px !important;
+  color: rgb(148 163 184);
 }
 
 .editor .editorLineNumber {

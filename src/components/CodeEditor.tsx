@@ -4,8 +4,8 @@ import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-nasm";
 import "prismjs/themes/prism-dark.css";
 import Editor from "react-simple-code-editor";
+import "./CodeEditor.styles.css";
 import { ErrorMarker } from "./ErrorMarker";
-import "./styles.css";
 
 type EditorProps = {
   code: string;
@@ -43,10 +43,6 @@ export default function CodeEditor({ code, onCodeChange, currentLine, failure }:
       padding={10}
       textareaId="codeArea"
       className="editor"
-      style={{
-        fontFamily: "JetBrainsMono, monospace",
-        fontSize: 12,
-      }}
     />
   );
 }

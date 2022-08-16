@@ -1,18 +1,8 @@
 body {
   margin: 0;
-  font-family: JetBrainsMono, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(15 23 42);
-}
-
-pre {
-  color: rgb(148 163 184);
-}
-
-code {
-  font-family: JetBrainsMono, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  /* background-color: rgb(15 23 42); */
 }
 
 @font-face {
