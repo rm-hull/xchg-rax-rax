@@ -9,7 +9,7 @@ import { ErrorMarker } from "./ErrorMarker";
 
 type EditorProps = {
   code: string;
-  currentLine: (lineNumber: number) => boolean;
+  isExecuting: (lineNumber: number) => boolean;
   failure?: Failure;
   onCodeChange: (code: string) => void;
 };
@@ -17,7 +17,7 @@ type EditorProps = {
 const hightlightWithLineNumbers = (
   input: string,
   language: string,
-  range: (lineNumber: number) => boolean,
+  isExecuting: (lineNumber: number) => boolean,
   failure?: Failure
 ): JSX.Element =>
   highlight(input, language)
@@ -25,7 +25,7 @@ const hightlightWithLineNumbers = (
     .map((line: string, i: number) => {
       const currentLine = i + 1;
       return (
-        <div key={i} className={clsx({ currentLine: range(currentLine) })}>
+        <div key={i} className={clsx({ currentLine: isExecuting(currentLine) })}>
           <span className="editorLineNumber">{currentLine}</span>
           <span dangerouslySetInnerHTML={{ __html: line }} />
           <ErrorMarker failure={failure} currentLine={currentLine} />
@@ -34,12 +34,12 @@ const hightlightWithLineNumbers = (
       );
     });
 
-export default function CodeEditor({ code, onCodeChange, currentLine, failure }: EditorProps) {
+export default function CodeEditor({ code, onCodeChange, isExecuting, failure }: EditorProps) {
   return (
     <Editor
       value={code}
       onValueChange={onCodeChange}
-      highlight={(code) => hightlightWithLineNumbers(code, languages.nasm, currentLine, failure)}
+      highlight={(code) => hightlightWithLineNumbers(code, languages.nasm, isExecuting, failure)}
       padding={10}
       textareaId="codeArea"
       className="editor"

@@ -46,7 +46,7 @@ export default function Debugger() {
         code={vm.code}
         onCodeChange={handleCodeChange}
         failure={vm.error}
-        currentLine={(lineNumber) => vm.isExecuting(lineNumber)}
+        isExecuting={(lineNumber) => vm.isExecuting(lineNumber)}
       />
       <VirtualMachine vm={vm} />
     </Container>
