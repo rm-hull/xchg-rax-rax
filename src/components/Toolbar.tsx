@@ -36,10 +36,11 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
   };
 
   return (
-    <HStack>
+    <HStack spacing={0}>
       <Tooltip label="Continue" color="white">
         <IconButton
-          variant="outline"
+          fontSize={16}
+          variant="ghost"
           icon={<VscDebugContinue />}
           aria-label="Continue"
           textColor="#86bcf9"
@@ -49,7 +50,8 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
       </Tooltip>
       <Tooltip label="Single step" color="white">
         <IconButton
-          variant="outline"
+          fontSize={16}
+          variant="ghost"
           icon={<VscDebugStepOver />}
           aria-label="Single step"
           textColor="#86bcf9"
@@ -59,7 +61,10 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
       </Tooltip>
       <Tooltip label="Stop" color="white">
         <IconButton
-          variant="outline"
+          margin={0}
+          p={0}
+          size="sm"
+          variant="ghost"
           icon={<VscDebugStop />}
           aria-label="Stop"
           textColor="#e58c77"
@@ -69,7 +74,8 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
       </Tooltip>
       <Tooltip label="Restart" color="white">
         <IconButton
-          variant="outline"
+          fontSize={16}
+          variant="ghost"
           icon={<VscDebugRestart />}
           aria-label="Restart"
           textColor="#9acf8c"

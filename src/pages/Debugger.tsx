@@ -37,7 +37,7 @@ export default function Debugger() {
   }
 
   return (
-    <Container>
+    <Container maxWidth="100%">
       <HStack justifyContent="space-between">
         <h3>ID: {id}</h3>
         <Toolbar vm={vm} update={update} />

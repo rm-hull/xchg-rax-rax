@@ -2,15 +2,11 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Debugger from "./pages/Debugger";
 
-const theme = {
-  style: {
-    global: {},
-  },
-};
+// const theme = extendTheme(withDefaultColorScheme({ colorScheme: "red" }));
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <Routes>
         <Route
           path="/about"
