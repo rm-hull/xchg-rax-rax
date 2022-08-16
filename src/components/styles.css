@@ -5,7 +5,7 @@
 .editor #codeArea {
   outline: none;
   padding-left: 60px !important;
-  caret-color: white;
+  /* caret-color: white; */
 }
 
 .editor pre {

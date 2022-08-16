@@ -37,7 +37,7 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
 
   return (
     <HStack spacing={0}>
-      <Tooltip label="Continue" color="white">
+      <Tooltip label="Continue">
         <IconButton
           fontSize={16}
           variant="ghost"
@@ -48,7 +48,7 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
           disabled={hasError}
         />
       </Tooltip>
-      <Tooltip label="Single step" color="white">
+      <Tooltip label="Single step">
         <IconButton
           fontSize={16}
           variant="ghost"
@@ -59,7 +59,7 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
           disabled={hasError}
         />
       </Tooltip>
-      <Tooltip label="Stop" color="white">
+      <Tooltip label="Stop">
         <IconButton
           margin={0}
           p={0}
@@ -72,7 +72,7 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
           disabled={hasError || vm.ip === 0}
         />
       </Tooltip>
-      <Tooltip label="Restart" color="white">
+      <Tooltip label="Restart">
         <IconButton
           fontSize={16}
           variant="ghost"
