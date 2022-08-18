@@ -2,9 +2,9 @@ import Operand from "./operand";
 
 export default class Literal implements Operand {
   readonly name: string;
-  readonly value: number;
+  readonly value: bigint;
 
-  constructor(value: number) {
+  constructor(value: bigint) {
     this.name = `number(${value})`;
     this.value = value;
   }

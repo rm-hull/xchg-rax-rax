@@ -22,10 +22,10 @@ const register = regexp(/[a-z]{2,3}/)
   .assert(Register.isValidName, "invalid register name")
   .map((value) => new Register(value));
 
-const decimalNumber = seq(string("-").fallback(""), digit, digits).tie().map(Number);
+const decimalNumber = seq(string("-").fallback(""), digit, digits).tie().map(BigInt);
 const hexadecimalNumber = string("0x")
   .then(regexp(/[0-9a-fA-F]+/))
-  .map((value) => parseInt(value, 16))
+  .map((value) => BigInt(`0x${value}`))
   .desc("hexadecimal number");
 
 const number = alt(hexadecimalNumber, decimalNumber);
@@ -33,7 +33,7 @@ const number = alt(hexadecimalNumber, decimalNumber);
 const literal = number.map((value) => new Literal(value)).desc("literal");
 const address = number
   .wrap(string("["), string("]"))
-  .map((value) => new Address(value))
+  .map((value) => new Address(Number(value)))
   .desc("address");
 const reference = alt(string("$"), regexp(/\.?[a-z]/))
   .map((value) => new Reference(value))

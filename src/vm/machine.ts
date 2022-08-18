@@ -8,14 +8,14 @@ import Literal from "./literal";
 export class Machine {
   [immerable] = true;
 
-  private registers: Record<string, number>;
-  private memory: Record<number, number>;
+  private registers: Record<string, bigint>;
+  private memory: Record<number, bigint>;
   private program: Result<Instruction[]>;
   private sourceCode: string;
 
   constructor() {
     this.registers = {
-      ip: 0,
+      ip: BigInt(0),
     };
     this.memory = {};
     this.program = parse("");
@@ -23,7 +23,7 @@ export class Machine {
   }
 
   public get ip(): number {
-    return this.registers.ip;
+    return Number(this.registers.ip);
   }
 
   public get error(): Failure | undefined {
@@ -49,11 +49,11 @@ export class Machine {
   }
 
   public stop() {
-    this.registers.ip = 0;
+    this.registers.ip = BigInt(0);
   }
 
   public restart() {
-    this.registers.ip = 0;
+    this.registers.ip = BigInt(0);
   }
 
   public poke(address: Address, value: Literal) {

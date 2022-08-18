@@ -31,13 +31,13 @@ describe("NASM parser", () => {
   });
 
   it("should parse an instruction with register and literal operands", () => {
-    const instr: Instruction = { opcode: "mov", operands: [new Register("rdx"), new Literal(0)] };
+    const instr: Instruction = { opcode: "mov", operands: [new Register("rdx"), new Literal(BigInt(0))] };
     const result = parse("mov      rdx,0");
     expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
 
   it("should parse an instruction with a hexadecimal literal operands", () => {
-    const instr: Instruction = { opcode: "ror", operands: [new Register("rcx"), new Literal(13)] };
+    const instr: Instruction = { opcode: "ror", operands: [new Register("rcx"), new Literal(BigInt(13))] };
     const result = parse("ror      rcx,0xd");
     expect(stripMetadata(result)).toEqual({ status: true, value: [instr] });
   });
@@ -83,10 +83,10 @@ describe("NASM parser", () => {
       { opcode: "xor", operands: [new Register("eax"), new Register("eax")] },
       { opcode: "lea", operands: [new Register("rbx"), new Address(0)] },
       { opcode: "loop", operands: [new Reference("$")] },
-      { opcode: "mov", operands: [new Register("rdx"), new Literal(0)] },
-      { opcode: "and", operands: [new Register("esi"), new Literal(0)] },
+      { opcode: "mov", operands: [new Register("rdx"), new Literal(BigInt(0))] },
+      { opcode: "and", operands: [new Register("esi"), new Literal(BigInt(0))] },
       { opcode: "sub", operands: [new Register("edi"), new Register("edi")] },
-      { opcode: "push", operands: [new Literal(0)] },
+      { opcode: "push", operands: [new Literal(BigInt(0))] },
       { opcode: "pop", operands: [new Register("rbp")] },
     ];
     const result = parse(input);
