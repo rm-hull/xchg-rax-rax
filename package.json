@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://destructuring-bind.org/xchg-rax-rax",
   "dependencies": {
-    "@chakra-ui/react": "^2.2.9",
+    "@chakra-ui/react": "^2.3.1",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "clsx": "^1.2.1",
@@ -14,6 +14,7 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-simple-code-editor": "^0.13.0",
