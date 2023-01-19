@@ -4090,13 +4090,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:*, @types/jest@npm:^29.0.0":
+"@types/jest@npm:*":
   version: 29.0.0
   resolution: "@types/jest@npm:29.0.0"
   dependencies:
     expect: ^29.0.0
     pretty-format: ^29.0.0
   checksum: b20c4b38c7c963862d82c21c0a1ae2b96015afb1511c835da43e8fd53659ca884f8103a2159be2ce74d2888472a1ac93d20d08ec1ac0970385cbb74c46d47585
+  languageName: node
+  linkType: hard
+
+"@types/jest@npm:^29.2.6":
+  version: 29.2.6
+  resolution: "@types/jest@npm:29.2.6"
+  dependencies:
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: 90190ac830334af1470d255853f9621fe657e5030b4d96773fc1f884833cd303c76580b00c1b86dc38a8db94f1c7141d462190437a10af31852b8845a57c48ba
   languageName: node
   linkType: hard
 
@@ -15266,7 +15276,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^14.4.3
-    "@types/jest": ^29.0.0
+    "@types/jest": ^29.2.6
     "@types/node": ^18.7.16
     "@types/object-hash": ^2.2.1
     "@types/parsimmon": ^1.10.6
