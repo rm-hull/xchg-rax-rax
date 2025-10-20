@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://destructuring-bind.org/xchg-rax-rax",
   "dependencies": {
-    "@chakra-ui/react": "^2.3.2",
+    "@chakra-ui/react": "^3.27.1",
     "@chakra-ui/styled-system": "^2.3.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
