@@ -4189,10 +4189,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.7.16":
+"@types/node@npm:*":
   version: 18.7.16
   resolution: "@types/node@npm:18.7.16"
   checksum: 01a3d35c764a3f0e7370b56e1ad4203731131883c65784e020009014171b3f53c4649cde6c7aa4f1026b907ee87ef6ae6ece2bc518151dc7b81100fe8b1db3ad
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^24.8.1":
+  version: 24.8.1
+  resolution: "@types/node@npm:24.8.1"
+  dependencies:
+    undici-types: ~7.14.0
+  checksum: 55fca8f900a017c207e4e413956f3fdd17178c3d5ffc8fd4bb7b0b5136865ca06076b1335e1e5e6f3269cace491dc1f4ecc1ab4410ff4acf25c9087585560c86
   languageName: node
   linkType: hard
 
@@ -14678,6 +14687,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~7.14.0":
+  version: 7.14.0
+  resolution: "undici-types@npm:7.14.0"
+  checksum: bd28cb36b33a51359f02c27b84bfe8563cdad57bdab0aa6ac605ce64d51aff49fd0aa4cb2d3b043caaa93c3ec42e96b5757df5d2d9bcc06a5f3e71899c765035
+  languageName: node
+  linkType: hard
+
 "unicode-canonical-property-names-ecmascript@npm:^2.0.0":
   version: 2.0.0
   resolution: "unicode-canonical-property-names-ecmascript@npm:2.0.0"
@@ -15532,7 +15548,7 @@ __metadata:
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^14.4.3
     "@types/jest": ^29.4.0
-    "@types/node": ^18.7.16
+    "@types/node": ^24.8.1
     "@types/object-hash": ^2.2.1
     "@types/parsimmon": ^1.10.6
     "@types/prismjs": ^1.26.5
