@@ -9,7 +9,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "clsx": "^2.1.1",
-    "framer-motion": "^7.3.2",
+    "framer-motion": "^12.23.24",
     "immer": "^9.0.15",
     "parsimmon": "^1.18.1",
     "prismjs": "^1.30.0",
