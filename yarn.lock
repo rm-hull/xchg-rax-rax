@@ -14709,13 +14709,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-simple-code-editor@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "react-simple-code-editor@npm:0.13.0"
+"react-simple-code-editor@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "react-simple-code-editor@npm:0.14.1"
   peerDependencies:
-    react: "*"
-    react-dom: "*"
-  checksum: 054f6b6d799fa67df884d0ee9bbb79a0a0dd0e3b42ca68e5aebdbc8488b2b77746d5c6f8efc28cbafbf23f970826acab257a28d9f516fe7176e6de52734cfd13
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: b89571048a855d228598b54d93e1b407a47762ab26d17836b382194db022bf78866ff9fe1d5f0d7d1b1a62aa73798449d633bfec4f019cfcda84edb576ca82ab
   languageName: node
   linkType: hard
 
@@ -17908,7 +17908,7 @@ __metadata:
     react-icons: ^5.5.0
     react-router-dom: ^7.9.4
     react-scripts: 5.0.1
-    react-simple-code-editor: ^0.13.0
+    react-simple-code-editor: ^0.14.1
     react-use: ^17.6.0
     ts-node: ^10.9.1
     typescript: ^5.9.3
