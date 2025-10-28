@@ -5,8 +5,8 @@ import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import ErrorFallback from "./components/ErrorFallback";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
+import "./main.css";
+import { reportWebVitals } from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 const manager = createLocalStorageManager("xchg-rax-rax.color-mode");

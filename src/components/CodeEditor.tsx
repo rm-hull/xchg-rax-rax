@@ -19,7 +19,7 @@ const hightlightWithLineNumbers = (
   language: string,
   isExecuting: (lineNumber: number) => boolean,
   failure?: Failure
-): JSX.Element =>
+) =>
   highlight(input, language)
     .split("\n")
     .map((line: string, i: number) => {
