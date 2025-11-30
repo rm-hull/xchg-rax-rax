@@ -1,3 +1,4 @@
+import { ErrorFallback } from "@rm-hull/chakra-error-fallback";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
@@ -6,7 +7,6 @@ import App from "./App";
 import { Provider } from "./components/ui/provider";
 import "./main.css";
 import { reportWebVitals } from "./reportWebVitals";
-import { ErrorFallback } from "@rm-hull/chakra-error-fallback";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 

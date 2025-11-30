@@ -18,7 +18,7 @@ export default function Debugger() {
       vm.code = sourceCode;
     });
 
-  const { loading, error } = useFetchAssembly(id, handleCodeChange);
+  const { loading, error } = useFetchAssembly(id ?? "", handleCodeChange);
 
   if (loading) {
     return (
@@ -31,7 +31,7 @@ export default function Debugger() {
   if (error) {
     return (
       <Container>
-        <h3>Error: {error.message}</h3>
+        <h3>Error: {error?.message}</h3>
       </Container>
     );
   }
@@ -46,7 +46,7 @@ export default function Debugger() {
         code={vm.code}
         onCodeChange={handleCodeChange}
         failure={vm.error}
-        isExecuting={(lineNumber) => vm.isExecuting(lineNumber)}
+        isExecuting={(line) => vm.isExecuting(line)}
       />
       <VirtualMachine vm={vm} />
     </Container>

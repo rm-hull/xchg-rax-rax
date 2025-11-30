@@ -15,11 +15,11 @@ const label = regexp(/(\.?[a-z]+):/, 1).desc("label");
 
 const opcode = regexp(/[a-z]{2,}/)
   .desc("opcode")
-  .assert(Instruction.isValidOpcode, "invalid opcode");
+  .assert(Instruction.isValidOpcode.bind(Instruction), "invalid opcode");
 
 const register = regexp(/[a-z]{2,3}/)
   .desc("register")
-  .assert(Register.isValidName, "invalid register name")
+  .assert(Register.isValidName.bind(Register), "invalid register name")
   .map((value) => new Register(value));
 
 const decimalNumber = seq(string("-").fallback(""), digit, digits).tie().map(BigInt);

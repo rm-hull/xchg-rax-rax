@@ -1,4 +1,5 @@
 import { HStack, IconButton } from "@chakra-ui/react";
+import { useCallback } from "react";
 import { VscDebugContinue, VscDebugRestart, VscDebugStepOver, VscDebugStop } from "react-icons/vsc";
 import { Updater } from "use-immer";
 import { Machine } from "../vm/machine";
@@ -12,29 +13,29 @@ type ToolbarProps = {
 export default function Toolbar({ vm, update }: ToolbarProps) {
   const hasError = !!vm.error;
 
-  const handleContinue = () => {
+  const handleContinue = useCallback(() => {
     update((vm) => {
       vm.stop();
     });
-  };
+  }, [update]);
 
-  const handleSingleStep = () => {
+  const handleSingleStep = useCallback(() => {
     update((vm) => {
       vm.step();
     });
-  };
+  }, [update]);
 
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     update((vm) => {
       vm.restart();
     });
-  };
+  }, [update]);
 
-  const handleStop = () => {
+  const handleStop = useCallback(() => {
     update((vm) => {
       vm.stop();
     });
-  };
+  }, [update]);
 
   return (
     <HStack gap={0}>

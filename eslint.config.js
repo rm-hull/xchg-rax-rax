@@ -34,7 +34,7 @@ export default tseslint.config(
           globals: globals.browser,
           parser: tseslint.parser,
           parserOptions: {
-            projectService: true,
+            project: ["./tsconfig.json", "./tsconfig.node.json"],
             tsconfigRootDir: import.meta.dirname,
           },
         },
@@ -79,7 +79,7 @@ export default tseslint.config(
         // TypeScript resolver: ensure eslint-import-resolver-typescript is installed
         typescript: {
           alwaysTryTypes: true,
-          project: ["./tsconfig.json"],
+          project: ["./tsconfig.json", "./tsconfig.node.json"],
         },
         node: true,
       },
