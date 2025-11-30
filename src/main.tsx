@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
-import ErrorFallback from "./components/ErrorFallback";
 import { Provider } from "./components/ui/provider";
 import "./main.css";
 import { reportWebVitals } from "./reportWebVitals";
+import { ErrorFallback } from "@rm-hull/chakra-error-fallback";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
