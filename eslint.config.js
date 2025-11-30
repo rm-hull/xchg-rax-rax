@@ -34,7 +34,8 @@ export default tseslint.config(
           globals: globals.browser,
           parser: tseslint.parser,
           parserOptions: {
-            project: "./tsconfig.json",
+            projectService: true,
+            tsconfigRootDir: import.meta.dirname,
           },
         },
       },
@@ -80,7 +81,7 @@ export default tseslint.config(
           alwaysTryTypes: true,
           project: ["./tsconfig.json"],
         },
-
+        node: true,
       },
     },
   }

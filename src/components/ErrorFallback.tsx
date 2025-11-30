@@ -4,13 +4,13 @@ import { FallbackProps } from "react-error-boundary";
 export default function ErrorFallback({ error }: FallbackProps) {
   return (
     <Container maxWidth="container.lg">
-          <Alert.Root status="error">
-            <Alert.Indicator />
-            <Alert.Content>
-              <Alert.Title>Something went wrong:</Alert.Title>
-              <Alert.Description>{error.message}</Alert.Description>
-            </Alert.Content>
-          </Alert.Root>
+      <Alert.Root status="error">
+        <Alert.Indicator />
+        <Alert.Content>
+          <Alert.Title>Something went wrong:</Alert.Title>
+          <Alert.Description>{error.message}</Alert.Description>
+        </Alert.Content>
+      </Alert.Root>
       <Container m={5}>
         <Heading size="sm">Stack trace</Heading>
         <Code background="none">

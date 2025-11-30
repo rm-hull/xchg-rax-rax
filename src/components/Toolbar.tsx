@@ -38,29 +38,17 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
 
   return (
     <HStack gap={0}>
-    <Tooltip content="Continue">
-        <IconButton
-          fontSize={16}
-          variant="ghost"
-          color="#86bcf9"
-          onClick={handleContinue}
-          disabled={hasError}
-        >
+      <Tooltip content="Continue">
+        <IconButton fontSize={16} variant="ghost" color="#86bcf9" onClick={handleContinue} disabled={hasError}>
           <VscDebugContinue />
         </IconButton>
-    </Tooltip>
-    <Tooltip content="Single step">
-        <IconButton
-          fontSize={16}
-          variant="ghost"
-          color="#86bcf9"
-          onClick={handleSingleStep}
-          disabled={hasError}
-        >
+      </Tooltip>
+      <Tooltip content="Single step">
+        <IconButton fontSize={16} variant="ghost" color="#86bcf9" onClick={handleSingleStep} disabled={hasError}>
           <VscDebugStepOver />
         </IconButton>
-    </Tooltip>
-    <Tooltip content="stop">
+      </Tooltip>
+      <Tooltip content="stop">
         <IconButton
           margin={0}
           p={0}
@@ -72,8 +60,8 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
         >
           <VscDebugStop />
         </IconButton>
-    </Tooltip>
-    <Tooltip content="Restart">
+      </Tooltip>
+      <Tooltip content="Restart">
         <IconButton
           fontSize={16}
           variant="ghost"
@@ -83,7 +71,7 @@ export default function Toolbar({ vm, update }: ToolbarProps) {
         >
           <VscDebugRestart />
         </IconButton>
-    </Tooltip>
+      </Tooltip>
     </HStack>
   );
 }

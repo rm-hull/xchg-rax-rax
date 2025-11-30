@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
@@ -16,14 +14,14 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
   <React.StrictMode>
-
     <Provider>
       <Router basename="/xchg-rax-rax">
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <App />
         </ErrorBoundary>
       </Router>
-    </Provider>  </React.StrictMode>
+    </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
