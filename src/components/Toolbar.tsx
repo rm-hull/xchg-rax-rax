@@ -1,7 +1,9 @@
-import { HStack, IconButton, Tooltip } from "@chakra-ui/react";
+import { HStack, IconButton } from "@chakra-ui/react";
+import { useCallback } from "react";
 import { VscDebugContinue, VscDebugRestart, VscDebugStepOver, VscDebugStop } from "react-icons/vsc";
 import { Updater } from "use-immer";
 import { Machine } from "../vm/machine";
+import { Tooltip } from "./ui/tooltip";
 
 type ToolbarProps = {
   vm: Machine;
@@ -11,77 +13,65 @@ type ToolbarProps = {
 export default function Toolbar({ vm, update }: ToolbarProps) {
   const hasError = !!vm.error;
 
-  const handleContinue = () => {
+  const handleContinue = useCallback(() => {
     update((vm) => {
       vm.stop();
     });
-  };
+  }, [update]);
 
-  const handleSingleStep = () => {
+  const handleSingleStep = useCallback(() => {
     update((vm) => {
       vm.step();
     });
-  };
+  }, [update]);
 
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     update((vm) => {
       vm.restart();
     });
-  };
+  }, [update]);
 
-  const handleStop = () => {
+  const handleStop = useCallback(() => {
     update((vm) => {
       vm.stop();
     });
-  };
+  }, [update]);
 
   return (
-    <HStack spacing={0}>
-      <Tooltip label="Continue">
-        <IconButton
-          fontSize={16}
-          variant="ghost"
-          icon={<VscDebugContinue />}
-          aria-label="Continue"
-          textColor="#86bcf9"
-          onClick={handleContinue}
-          disabled={hasError}
-        />
+    <HStack gap={0}>
+      <Tooltip content="Continue">
+        <IconButton fontSize={16} variant="ghost" color="#86bcf9" onClick={handleContinue} disabled={hasError}>
+          <VscDebugContinue />
+        </IconButton>
       </Tooltip>
-      <Tooltip label="Single step">
-        <IconButton
-          fontSize={16}
-          variant="ghost"
-          icon={<VscDebugStepOver />}
-          aria-label="Single step"
-          textColor="#86bcf9"
-          onClick={handleSingleStep}
-          disabled={hasError}
-        />
+      <Tooltip content="Single step">
+        <IconButton fontSize={16} variant="ghost" color="#86bcf9" onClick={handleSingleStep} disabled={hasError}>
+          <VscDebugStepOver />
+        </IconButton>
       </Tooltip>
-      <Tooltip label="Stop">
+      <Tooltip content="stop">
         <IconButton
           margin={0}
           p={0}
           size="sm"
           variant="ghost"
-          icon={<VscDebugStop />}
-          aria-label="Stop"
-          textColor="#e58c77"
+          color="#e58c77"
           onClick={handleStop}
           disabled={hasError || vm.ip === 0}
-        />
+        >
+          <VscDebugStop />
+        </IconButton>
       </Tooltip>
-      <Tooltip label="Restart">
+      <Tooltip content="Restart">
         <IconButton
           fontSize={16}
           variant="ghost"
-          icon={<VscDebugRestart />}
-          aria-label="Restart"
-          textColor="#9acf8c"
+          color="#9acf8c"
           onClick={handleRestart}
           disabled={hasError || vm.ip < 1}
-        />
+        >
+          <VscDebugRestart />
+        </IconButton>
       </Tooltip>
     </HStack>
   );
