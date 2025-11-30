@@ -22,7 +22,7 @@ const hightlightWithLineNumbers = (
   failure?: Failure
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  return (highlight(input, language) as string).split("\n").map((line: string, i: number) => {
+  return (highlight(input, language) ?? input).split("\n").map((line: string, i: number) => {
     const currentLine = i + 1;
     return (
       <div key={i} className={clsx({ currentLine: isExecuting(currentLine) })}>
