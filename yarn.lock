@@ -3114,7 +3114,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsdom@npm:^27":
+"@types/jsdom@npm:^27.0.0":
   version: 27.0.0
   resolution: "@types/jsdom@npm:27.0.0"
   dependencies:
@@ -7439,10 +7439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "immer@npm:11.0.0"
-  checksum: 10c0/3401f05332fa73189277d98c516c0acb84f91e0ff122f93d0023342858c47d068892442f8c2957236d9c89859b7616e00a57a44d25ed873c4af5604279c6a08e
+"immer@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "immer@npm:11.0.1"
+  checksum: 10c0/d505c1aa6d5d7ff03196e0a508af2853839eb1a3d5af51d55ca5815c46981b74765faf357fbd276b151109b07dd6b564077be92b0247b0a4effa78130166030d
   languageName: node
   linkType: hard
 
@@ -9042,12 +9042,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "prettier@npm:3.7.1"
+"prettier@npm:^3.7.3":
+  version: 3.7.3
+  resolution: "prettier@npm:3.7.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/a6610043ee0a64a3251a948bf82fad3e59d984a8e8dea206400cfa190585417e3343b32c1f6ae7d8f40798a9b4bd91affc08fa7795dd99a9dec5c9bccdf31500
+  checksum: 10c0/ee86bb06121c74dadc54f30b6f99aff6288966d9b842ce501d6991e20d20c6ce2d45028651b3b0955ca6e5fa89c1bee1e72b6f810243a93cef8bc69737972ef7
   languageName: node
   linkType: hard
 
@@ -11243,7 +11243,7 @@ __metadata:
     "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:^14.6.1"
     "@types/jest": "npm:^30.0.0"
-    "@types/jsdom": "npm:^27"
+    "@types/jsdom": "npm:^27.0.0"
     "@types/node": "npm:^24.10.1"
     "@types/object-hash": "npm:^3.0.6"
     "@types/parsimmon": "npm:^1.10.9"
@@ -11275,11 +11275,11 @@ __metadata:
     eslint-plugin-testing-library: "npm:^7.13.5"
     eslint-plugin-unused-imports: "npm:^4.3.0"
     framer-motion: "npm:^12.23.24"
-    immer: "npm:^11.0.0"
+    immer: "npm:^11.0.1"
     jsdom: "npm:^27.2.0"
     next-themes: "npm:^0.4.6"
     parsimmon: "npm:^1.18.1"
-    prettier: "npm:^3.7.1"
+    prettier: "npm:^3.7.3"
     prismjs: "npm:^1.30.0"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
