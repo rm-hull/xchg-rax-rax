@@ -5,7 +5,7 @@
   "homepage": "https://destructuring-bind.org/xchg-rax-rax",
   "type": "module",
   "dependencies": {
-    "@chakra-ui/react": "^3.36.0",
+    "@chakra-ui/react": "^3.36.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@rm-hull/chakra-error-fallback": "^0.1.3",
@@ -26,7 +26,7 @@
     "web-vitals": "^5.3.0"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "^3.36.0",
+    "@chakra-ui/cli": "^3.36.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
