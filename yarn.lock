@@ -7683,10 +7683,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^11.1.17":
-  version: 11.1.17
-  resolution: "immer@npm:11.1.17"
-  checksum: 10c0/4205c65003c2e5288d681c33c125043902b11ff7ad1d4f770bdcc9aadb4fa5bec2128a3253b9e270853a8ce93e028f235babdfbbba2fcc695b8d1a12622d3fb8
+"immer@npm:^11.1.18":
+  version: 11.1.18
+  resolution: "immer@npm:11.1.18"
+  checksum: 10c0/afe02fcd154134eb2b3bea5a06051ef2e220677dbbc9c0b17ea2ce1c22bfc3690ac16f916922c12ad9c074617a02148ac5d94cbf0886d76e7ebac726806679d0
   languageName: node
   linkType: hard
 
@@ -11818,7 +11818,7 @@ __metadata:
     eslint-plugin-testing-library: "npm:^7.16.2"
     eslint-plugin-unused-imports: "npm:^4.4.1"
     framer-motion: "npm:^13.1.0"
-    immer: "npm:^11.1.17"
+    immer: "npm:^11.1.18"
     jsdom: "npm:^30.0.1"
     next-themes: "npm:^0.4.6"
     parsimmon: "npm:^1.18.1"
