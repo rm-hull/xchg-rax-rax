@@ -6584,9 +6584,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^29.16.1":
-  version: 29.16.1
-  resolution: "eslint-plugin-jest@npm:29.16.1"
+"eslint-plugin-jest@npm:^29.16.5":
+  version: 29.16.5
+  resolution: "eslint-plugin-jest@npm:29.16.5"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.0.0"
   peerDependencies:
@@ -6601,7 +6601,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/6aca236a8db9e9e736322f991ad6f33d776b9fabd9c3ddb1bb24515191a4438b2908ec88c5768dcfbb2323f48e6105fab91ee41d35574fa0bdd7631d53986506
+  checksum: 10c0/ef9736cf77a5d48349d143441662ddbae77d810529dbd7a3bfe0314cf5866adbcc87c437d91c3b147a00e7d1473290bae1ce2d528be784a984f6282d469fb5ca
   languageName: node
   linkType: hard
 
@@ -6726,12 +6726,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-refresh@npm:^0.5.4":
-  version: 0.5.4
-  resolution: "eslint-plugin-react-refresh@npm:0.5.4"
+"eslint-plugin-react-refresh@npm:^0.5.5":
+  version: 0.5.5
+  resolution: "eslint-plugin-react-refresh@npm:0.5.5"
   peerDependencies:
     eslint: ^9 || ^10
-  checksum: 10c0/d3946e703a1d0c4e7d2a67bd73cce6def725a1d38839799b7e5d042fba920d5f5600ef30c6fb24ae595aceaa2d71fe95a09c8bb75d551767f29ca748b988a2f7
+  checksum: 10c0/35d20c8aadeacb3c49eae484b8df8ec07ae5939e2450d7a58b59b37311b0a4219dc870116090b54a96a51da726ad4dc562bf9452fa8057944535aafd9ddcf35e
   languageName: node
   linkType: hard
 
@@ -11818,7 +11818,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^4.4.5"
     eslint-plugin-cypress: "npm:^7.0.1"
     eslint-plugin-import: "npm:^2.32.0"
-    eslint-plugin-jest: "npm:^29.16.1"
+    eslint-plugin-jest: "npm:^29.16.5"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-node: "npm:^11.1.0"
     eslint-plugin-prettier: "npm:^5.5.6"
@@ -11827,7 +11827,7 @@ __metadata:
     eslint-plugin-react-compiler: "npm:^19.1.0-rc.2"
     eslint-plugin-react-hooks: "npm:^7.1.1"
     eslint-plugin-react-perf: "npm:^3.3.3"
-    eslint-plugin-react-refresh: "npm:^0.5.4"
+    eslint-plugin-react-refresh: "npm:^0.5.5"
     eslint-plugin-testing-library: "npm:^7.16.2"
     eslint-plugin-unused-imports: "npm:^4.4.1"
     framer-motion: "npm:^13.1.1"
