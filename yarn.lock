@@ -2548,19 +2548,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rm-hull/chakra-error-fallback@npm:^0.1.4":
-  version: 0.1.4
-  resolution: "@rm-hull/chakra-error-fallback@npm:0.1.4"
+"@rm-hull/chakra-error-fallback@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@rm-hull/chakra-error-fallback@npm:0.1.6"
   dependencies:
     next-themes: "npm:^0.4.6"
     react-icons: "npm:^5.7.0"
-    shiki: "npm:^4.4.2"
+    shiki: "npm:^4.4.3"
     source-map-js: "npm:^1.2.1"
   peerDependencies:
     "@chakra-ui/react": ">=3.28.0"
     react: ">=19.0.0"
     react-dom: ">=19.0.0"
-  checksum: 10c0/9cad976ffa12e0a6aec7a9aee77247b12493a9f099c9f174d3a17d54291d46466976a2a9667a30a84c54989ea18345b9c946ddca63e77b4b2bf5804fbcb59a93
+  checksum: 10c0/2c4464ed4630a457da2003b4a5c4caae8211bd5b6c318aa1b850bf9873e5c8dee8f3a795e044d571cff32354143078da2e327306d99cae6a48dd431242df3067
   languageName: node
   linkType: hard
 
@@ -9988,7 +9988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shiki@npm:^4.4.2":
+"shiki@npm:^4.4.3":
   version: 4.4.3
   resolution: "shiki@npm:4.4.3"
   dependencies:
@@ -11387,7 +11387,7 @@ __metadata:
     "@chakra-ui/react": "npm:^3.37.0"
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.1"
-    "@rm-hull/chakra-error-fallback": "npm:^0.1.4"
+    "@rm-hull/chakra-error-fallback": "npm:^0.1.6"
     "@testing-library/dom": "npm:^10.4.1"
     "@testing-library/jest-dom": "npm:^7.0.1"
     "@testing-library/react": "npm:^16.3.3"
